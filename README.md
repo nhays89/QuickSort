@@ -52,8 +52,30 @@ The pivot procedure above uses an in-place sorting algorithm that selects a pivo
 	} 	
 ```
 
-###More Information
+###Safety First
 
-For more information on how this algorithm works check out <a href="http://me.dt.in.th/page/Quicksort/">this</a> site.
+The above procedures work great for most inputs of the quicksort algorithm, but we can do better. The code below outlines a unique approach to generating faster results across all input ranges. It does so by always choosing to sort the smaller of the two partitioned arrays first. 
 
+``` java
+	private static void SafeQuicksort1st(Comparable[] a, int l, int r) {
+		while (r > l) {
+			int p = Pivot1st(a, l, r);
+			if (p - l <= r - p) {
+				SafeQuicksort1st(a, l, p - 1); // shorter part
+				l = p + 1; // emulate SafeQuicksort1st(a, p + 1, r);
+			} else {
+				SafeQuicksort1st(a, p + 1, r); // shorter part
+				r = p - 1; // emulate SafeQuicksort1st(a, l, p - 1);
+			}
+		}
+	}
+``` 
 
+### Sample Data
+
+The objective of this repo is to analyze the runtime differences when the input parameters change. Below is a table that outputs the runtimes of various different input sizes using integer objects. If you notice, you can discover large runtime differences when the input array is sorted vs unsorted. Likewise, when the sorting procedure uses a "safe" quicksort prodcedure as outlined below. 
+![](https://github.com/nhays89/QuickSort/blob/master/QuickSort/img/hmk3_quicksort_table.png)
+
+###For Your Information
+
+For more information on how this algorithm works check out <a href="http://me.dt.in.th/page/Quicksort/">this</a> site for the deets. If you are really curious, give <a href="https://stackoverflow.com/questions/12454866/how-to-optimize-quicksort">this</a> a whirl. 
