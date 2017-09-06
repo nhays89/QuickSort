@@ -1,10 +1,10 @@
 # QuickSort
 Quicksort is a comparison sort, meaning that it can sort items of any type for which a "less-than" relation (formally, a total order) is defined. Therefore, any object that implements the <a href="https://docs.oracle.com/javase/7/docs/api/java/lang/Comparable.htmlComparable"> Comparable</a> interface can be sorted using this algorithm. 
 
-###Runtime
+### Runtime
 The Quicksort algorithm has a Θ(n^2) worst case complexity even though it is only Θ(nlogn) on average. Our goal here is to observe the impact of this behavior difference in practice. 
 
-###How does it work?
+### How does it work?
 The code below is a slightly modified version of <a href="https://en.wikipedia.org/wiki/Tony_Hoare">Tony Hoare's</a> algorithm. 
 ```java
   public static void Quicksort1st(Comparable[] a) {
@@ -52,7 +52,7 @@ The pivot procedure above uses an in-place sorting algorithm that selects a pivo
 	} 	
 ```
 
-###Safety First
+### Safety First
 
 The above procedures work great for most inputs of the quicksort algorithm, but we can do better. The code below outlines a unique approach to generating faster results across all input ranges. It does so by always choosing to sort the smaller of the two partitioned arrays first. 
 
@@ -76,6 +76,6 @@ The above procedures work great for most inputs of the quicksort algorithm, but 
 The objective of this repo is to analyze the runtime differences when the input parameters change. Below is a table that outputs the runtimes of various different input sizes using integer objects. If you notice, you can discover large runtime differences when the input array is sorted vs unsorted. Likewise, when the sorting procedure uses a "safe" quicksort prodcedure as outlined below. 
 ![](https://github.com/nhays89/QuickSort/blob/master/QuickSort/img/hmk3_quicksort_table.png)
 
-###For Your Information
+### For Your Information
 
 For more information on how this algorithm works check out <a href="http://me.dt.in.th/page/Quicksort/">this</a> site for the deets. If you are really curious, give <a href="https://stackoverflow.com/questions/12454866/how-to-optimize-quicksort">this</a> a whirl. 
